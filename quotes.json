@@ -1,0 +1,37 @@
+[
+    {
+        "text": "The only way to do great work is to love what you do.",
+        "author": "Steve Jobs",
+        "category": "motivation"
+    },
+    {
+        "text": "Whether you think you can or you think you can't, you're right.",
+        "author": "Henry Ford",
+        "category": "motivation"
+    },
+    {
+        "text": "I'm not arguing, I'm just explaining why I'm right.",
+        "author": "Anonymous",
+        "category": "humor"
+    },
+    {
+        "text": "Don't cry because it's over, smile because it happened.",
+        "author": "Dr. Seuss",
+        "category": "inspiration"
+    },
+    {
+        "text": "If you’re offered a seat on a rocket ship, don’t ask what seat! Just get on.",
+        "author": "Sheryl Sandberg",
+        "category": "motivation"
+    },
+    {
+        "text": "Behind every great man, there is a woman rolling her eyes.",
+        "author": "Jim Carrey",
+        "category": "humor"
+    },
+    {
+        "text": "Do one thing every day that scares you.",
+        "author": "Eleanor Roosevelt",
+        "category": "inspiration"
+    }
+]

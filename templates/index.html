@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Quote Generator</h1>
+
+        <!-- Generate Quote Button -->
+        <button id="generate-btn">Generate Quote</button>
+
+        <!-- Quote Display -->
+        <p id="quote-text">Click "Generate Quote" to get started!</p>
+
+        <!-- Action Buttons -->
+        <div class="buttons">
+            <button id="copy-btn">Copy</button>
+            <button id="share-btn">Share</button>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button id="toggle-theme">Toggle Theme</button>
+    </div>
+
+    <script>
+        async function getQuote() {
+            const response = await fetch('/get-quote', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                document.getElementById('quote-text').innerHTML = `"${data.text}" — ${data.author}`;
+            } else {
+                document.getElementById('quote-text').innerHTML = 'No quotes found.';
+            }
+        }
+
+        // Generate Quote Event
+        document.getElementById('generate-btn').addEventListener('click', getQuote);
+
+        // Copy to Clipboard
+        document.getElementById('copy-btn').addEventListener('click', () => {
+            const quoteText = document.getElementById('quote-text').innerText;
+            navigator.clipboard.writeText(quoteText);
+            alert('Quote copied to clipboard!');
+        });
+
+        // Share on Twitter
+        document.getElementById('share-btn').addEventListener('click', () => {
+            const quoteText = document.getElementById('quote-text').innerText;
+            const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(quoteText)}`;
+            window.open(shareUrl, '_blank');
+        });
+
+        // Toggle Light/Dark Mode
+        document.getElementById('toggle-theme').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
